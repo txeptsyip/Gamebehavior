@@ -494,11 +494,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5aab094118dc5342929ebd78465040d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isrect: 1
   vertices:
   - {x: 0, y: 0}
-  - {x: 1, y: 0}
-  - {x: 1, y: -1}
-  - {x: 0, y: -1}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
 --- !u!1 &1538222258
 GameObject:
   m_ObjectHideFlags: 0

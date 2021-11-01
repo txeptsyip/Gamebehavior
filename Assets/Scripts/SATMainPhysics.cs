@@ -20,10 +20,14 @@ public class SATMainPhysics : MonoBehaviour
     }
 }
 
+
 public class SATObj
 {
     public Vector3 position;
     public Vector3 Velocity;
     public float Drag;
     public Vector2[] Vertices;
+    public float width;
+    public float height;
+    
 }
