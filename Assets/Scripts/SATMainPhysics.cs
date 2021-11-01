@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SATMainPhysics : MonoBehaviour
 {
+    public static SATMainPhysics instance;
+
+    public List<SATPhysObj> SATobjinspace = new List<SATPhysObj>();
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +18,12 @@ public class SATMainPhysics : MonoBehaviour
     {
         
     }
+}
+
+public class SATObj
+{
+    public Vector3 position;
+    public Vector3 Velocity;
+    public float Drag;
+    public Vector2[] Vertices;
 }

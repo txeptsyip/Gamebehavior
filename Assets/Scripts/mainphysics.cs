@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class mainphysics : MonoBehaviour
 {
@@ -100,4 +101,6 @@ public class Rectangle
     public float ymin = 1f;
     public float width = 1f;
     public float height = 1f;
+    public Vector3 Velocity;
+    public float Drag;
 }

@@ -175,6 +175,8 @@ MonoBehaviour:
     ymin: 1
     width: 1
     height: 1
+    Velocity: {x: 0, y: 0, z: 0}
+    Drag: 0
 --- !u!212 &230310394
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -237,6 +239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 382466831}
   - component: {fileID: 382466830}
+  - component: {fileID: 382466832}
   m_Layer: 0
   m_Name: physics object
   m_TagString: Untagged
@@ -266,7 +269,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382466829}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2100365, y: -0.32509118, z: -0.41704813}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1543779452}
@@ -276,6 +279,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &382466832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382466829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1f62eac645ea1e4e98060f2fbde4753, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SATobjinspace: []
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,6 +386,7 @@ GameObject:
   - component: {fileID: 826369929}
   - component: {fileID: 826369931}
   - component: {fileID: 826369930}
+  - component: {fileID: 826369932}
   m_Layer: 0
   m_Name: Square (1)
   m_TagString: Untagged
@@ -385,7 +402,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 826369928}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.17, y: 0.61, z: 0.41704813}
+  m_LocalPosition: {x: 4.17, y: 1, z: 0.41704813}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 382466831}
@@ -411,6 +428,8 @@ MonoBehaviour:
     ymin: 1
     width: 1
     height: 1
+    Velocity: {x: 0, y: 0, z: 0}
+    Drag: 0
 --- !u!212 &826369931
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -463,6 +482,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &826369932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826369928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5aab094118dc5342929ebd78465040d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vertices:
+  - {x: 0, y: 0}
+  - {x: 1, y: 0}
+  - {x: 1, y: -1}
+  - {x: 0, y: -1}
 --- !u!1 &1538222258
 GameObject:
   m_ObjectHideFlags: 0
