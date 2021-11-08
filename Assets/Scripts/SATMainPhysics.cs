@@ -7,6 +7,14 @@ public class SATMainPhysics : MonoBehaviour
     public static SATMainPhysics instance;
 
     public List<SATPhysObj> SATobjinspace = new List<SATPhysObj>();
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(this);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -26,8 +34,9 @@ public class SATObj
     public Vector3 position;
     public Vector3 Velocity;
     public float Drag;
-    public Vector2[] Vertices;
+    public List<Vector2> vertices = new List<Vector2>();
     public float width;
     public float height;
-    
+    public List<Vector2> normals = new List<Vector2>();
+
 }
