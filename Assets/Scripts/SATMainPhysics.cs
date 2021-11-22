@@ -34,9 +34,9 @@ public class SATObj
     public Vector3 position;
     public Vector3 Velocity;
     public float Drag;
-    public List<Vector2> vertices = new List<Vector2>();
+    public List<Vector3> vertices = new List<Vector3>();
     public float width;
     public float height;
-    public List<Vector2> normals = new List<Vector2>();
+    public List<Vector3> normals = new List<Vector3>();
 
 }
