@@ -10,6 +10,7 @@ public class SATPhysObj : MonoBehaviour
     public List<Vector3> vertices = new List<Vector3>();
     public List<Vector3> normals = new List<Vector3>();
     public List<Vector3> wVertices = new List<Vector3>();
+    public List<float> dotproducts = new List<float>();
     void Start()
     {
         Debug.Log("start started");
@@ -42,8 +43,17 @@ public class SATPhysObj : MonoBehaviour
         for (int a = 0; a < vertices.Count; a++)
         {
             normals.Add(wVertices[(a + 1) % wVertices.Count] - wVertices[a]);
-            normals[a] = new Vector3(normals[a].x * -1, normals[a].y);
+            normals[a] = new Vector3(normals[a].y * -1, normals[a].x);
             normals[a] = normals[a].normalized;
+        }
+        dotproducts.Clear();
+        for (int a=0; a < normals.Count; a++)
+        {
+            for (int b = 0; b < wVertices.Count; b ++)
+            {
+                dotproducts.Add(Vector3.Dot(normals[a], wVertices[b]));
+            }
+
         }
     }
 
