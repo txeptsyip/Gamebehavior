@@ -14,6 +14,7 @@ public class SATMainPhysics : MonoBehaviour
     public float aMax = 5001;
     public float bMin = 6000;
     public float bMax = 6001;
+    public Vector3 mousepos;
 
     private void Awake()
     {
@@ -25,21 +26,39 @@ public class SATMainPhysics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetMouseButtonDown(0))
+        {
+            mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousepos.z = 0;
+            Debug.Log(mousepos);
+            for (int a = 0; a < SATobjinspace.Count; a++)
+            {
+                if (SATobjinspace[a].satobj.ismmoveable == true)
+                {
+                    float dist = Vector3.Distance(mousepos, SATobjinspace[a].satobj.position);
+                    Vector3 direction = (SATobjinspace[a].satobj.position - mousepos).normalized;
+                    float force = (dist * 1.1f);
+                    doforce(direction, force, a);
+
+                }
+            }
+        }
+
         for (int a = 0; a < SATobjinspace.Count; a++)
         {
             for (int b = 0; b < SATobjinspace.Count; b++)
             {
                 if (a != b)
                 {
+                    bool collision = false;
                     tempnormals.Clear();
-                    tempnormals.AddRange(SATobjinspace[a].normals);
-                    tempnormals.AddRange(SATobjinspace[b].normals);
+                    tempnormals.AddRange(SATobjinspace[a].satobj.normals);
+                    tempnormals.AddRange(SATobjinspace[b].satobj.normals);
 
                     for (int c = 0; c < tempnormals.Count; c++)
                     {
@@ -62,12 +81,13 @@ public class SATMainPhysics : MonoBehaviour
                         {
                             if (tempnormals[c] == tempnormals.Last())
                             {
-                                Debug.Log("colliding!");
+                                collision = true;
+                                Debug.Log("colliding");
                             }
                         }
                         else
                         {
-                            Debug.Log("not colliding");
+                            collision = false;
                             break;
                         }
                     }
@@ -76,9 +96,19 @@ public class SATMainPhysics : MonoBehaviour
         }
 
     }
+    void doforce(Vector3 direction, float force, int a)
+    {
+        Debug.Log("direction is");
+        Debug.Log(direction);
+        Debug.Log("force is");
+        Debug.Log(force);
+        SATobjinspace[a].satobj.Velocity = direction;
+    }
 }
 
 
+
+[System.Serializable]
 public class SATObj
 {
     public Vector3 position;
@@ -88,5 +118,6 @@ public class SATObj
     public float width;
     public float height;
     public List<Vector3> normals = new List<Vector3>();
-
+    public List<Vector3> wVertices = new List<Vector3>();
+    public bool ismmoveable;
 }
