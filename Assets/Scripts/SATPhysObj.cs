@@ -14,7 +14,6 @@ public class SATPhysObj : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("start started");
         SATMainPhysics.instance.SATobjinspace.Add(this);
         if (isrect)
         {
@@ -24,8 +23,6 @@ public class SATPhysObj : MonoBehaviour
             satobj.vertices.Add(new Vector3(satobj.width * 0.5f, satobj.height * 0.5f));
             satobj.vertices.Add(new Vector3(satobj.width * 0.5f, -satobj.height * 0.5f));
             satobj.vertices.Add(new Vector3(-satobj.width * 0.5f, -satobj.height * 0.5f));
-            
-
         }
         wVertices.AddRange(satobj.vertices);
     }
