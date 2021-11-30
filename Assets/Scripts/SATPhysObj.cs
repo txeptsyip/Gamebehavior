@@ -16,7 +16,6 @@ public class SATPhysObj : MonoBehaviour
     {
         Debug.Log("start started");
         SATMainPhysics.instance.SATobjinspace.Add(this);
-        satobj = new SATObj();
         if (isrect)
         {
             satobj.width = transform.localScale.x;
