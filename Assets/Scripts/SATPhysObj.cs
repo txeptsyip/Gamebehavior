@@ -9,7 +9,6 @@ public class SATPhysObj : MonoBehaviour
                         // Start is called before the first frame update
 
 
-    public List<Vector3> wVertices = new List<Vector3>();
     public List<float> dotproducts = new List<float>();
 
     void Start()
@@ -24,7 +23,7 @@ public class SATPhysObj : MonoBehaviour
             satobj.vertices.Add(new Vector3(satobj.width * 0.5f, -satobj.height * 0.5f));
             satobj.vertices.Add(new Vector3(-satobj.width * 0.5f, -satobj.height * 0.5f));
         }
-        wVertices.AddRange(satobj.vertices);
+        satobj.wVertices.AddRange(satobj.vertices);
     }
 
 
@@ -34,21 +33,21 @@ public class SATPhysObj : MonoBehaviour
     {
         for (int b = 0; b < satobj.vertices.Count; b++)
         {
-            wVertices[b] = satobj.vertices[b] + transform.position;
+            satobj.wVertices[b] = satobj.vertices[b] + transform.position;
         }    
         satobj.normals.Clear();
         for (int a = 0; a < satobj.vertices.Count; a++)
         {
-            satobj.normals.Add(wVertices[(a + 1) % wVertices.Count] - wVertices[a]);
+            satobj.normals.Add(satobj.wVertices[(a + 1) % satobj.wVertices.Count] - satobj.wVertices[a]);
             satobj.normals[a] = new Vector3(satobj.normals[a].y * -1, satobj.normals[a].x);
             satobj.normals[a] = satobj.normals[a].normalized;
         }
         dotproducts.Clear();
         for (int a=0; a < satobj.normals.Count; a++)
         {
-            for (int b = 0; b < wVertices.Count; b ++)
+            for (int b = 0; b < satobj.wVertices.Count; b ++)
             {
-                dotproducts.Add(Vector3.Dot(satobj.normals[a], wVertices[b]));
+                dotproducts.Add(Vector3.Dot(satobj.normals[a], satobj.wVertices[b]));
             }
 
         }

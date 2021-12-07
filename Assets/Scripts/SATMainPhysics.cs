@@ -8,13 +8,13 @@ public class SATMainPhysics : MonoBehaviour
     public static SATMainPhysics instance;
     // OH GOD WHY IS EVERYTHING PUBLIC JESUS CHRIST!
     public List<SATPhysObj> SATobjinspace = new List<SATPhysObj>();
-    public List<Vector3> tempnormals = new List<Vector3>();
+
     public List<float> dotproducts = new List<float>();
-    public float aMin = 5000;
-    public float aMax = 5001;
-    public float bMin = 6000;
-    public float bMax = 6001;
-    public Vector3 mousepos;
+    float aMin = 5000;
+    float aMax = 5001;
+    float bMin = 6000;
+    float bMax = 6001;
+    Vector3 mousepos;
 
     private void Awake()
     {
@@ -42,8 +42,8 @@ public class SATMainPhysics : MonoBehaviour
                 {
                     float dist = Vector3.Distance(mousepos, SATobjinspace[a].satobj.position);
                     Vector3 direction = (SATobjinspace[a].satobj.position - mousepos).normalized;
-                    float force = (dist * 1.1f);
-                    doforce(direction, force, a);
+                    float force = (dist * 1.2f);
+                    SATobjinspace[a].satobj.Velocity = direction;
 
                 }
             }
@@ -56,23 +56,23 @@ public class SATMainPhysics : MonoBehaviour
                 if (a != b)
                 {
                     bool collision = false;
-                    tempnormals.Clear();
+                    List<Vector3> tempnormals = new List<Vector3>();
                     tempnormals.AddRange(SATobjinspace[a].satobj.normals);
                     tempnormals.AddRange(SATobjinspace[b].satobj.normals);
 
                     for (int c = 0; c < tempnormals.Count; c++)
                     {
 
-                        for (int d = 0; d < SATobjinspace[a].wVertices.Count; d++)
+                        for (int d = 0; d < SATobjinspace[a].satobj.wVertices.Count; d++)
                         {
-                            dotproducts.Add(Vector3.Dot(tempnormals[c], SATobjinspace[a].wVertices[d]));
+                            dotproducts.Add(Vector3.Dot(tempnormals[c], SATobjinspace[a].satobj.wVertices[d]));
                         }
                         aMin = dotproducts.Min();
                         aMax = dotproducts.Max();
                         dotproducts.Clear();
-                        for (int d = 0; d < SATobjinspace[b].wVertices.Count; d++)
+                        for (int d = 0; d < SATobjinspace[b].satobj.wVertices.Count; d++)
                         {
-                            dotproducts.Add(Vector3.Dot(tempnormals[c], SATobjinspace[b].wVertices[d]));
+                            dotproducts.Add(Vector3.Dot(tempnormals[c], SATobjinspace[b].satobj.wVertices[d]));
                         }
                         bMin = dotproducts.Min();
                         bMax = dotproducts.Max();
@@ -83,6 +83,7 @@ public class SATMainPhysics : MonoBehaviour
                             {
                                 collision = true;
                                 Debug.Log("colliding");
+                                docollision(a, b);
                             }
                         }
                         else
@@ -96,15 +97,28 @@ public class SATMainPhysics : MonoBehaviour
         }
 
     }
-    void doforce(Vector3 direction, float force, int a)
+    void docollision(int a , int b)
     {
-        Debug.Log("direction is");
-        Debug.Log(direction);
-        Debug.Log("force is");
-        Debug.Log(force);
-        SATobjinspace[a].satobj.Velocity = direction;
+        Vector3 relativeV = SATobjinspace[b].satobj.Velocity - SATobjinspace[a].satobj.Velocity;
+        Vector3 cNormal = (SATobjinspace[b].satobj.position - SATobjinspace[b].satobj.position).normalized;
+        float velANorm = Vector3.Dot(relativeV, cNormal);
+        if (velANorm > 0) 
+        { 
+            Debug.Log("was already moving away");
+            return;
+        }
+        float restitution = Mathf.Min(SATobjinspace[a].satobj.restitution, SATobjinspace[b].satobj.restitution);
+        float IScale = -(1 - restitution) * velANorm;
+        IScale /= (1 / SATobjinspace[a].satobj.mass) + (1 / SATobjinspace[b].satobj.mass);
+        Vector3 impulseTotal = IScale * cNormal;
+        SATobjinspace[a].satobj.Velocity = -(1 / SATobjinspace[a].satobj.mass * impulseTotal);
+        SATobjinspace[b].satobj.Velocity = (1 / SATobjinspace[b].satobj.mass * impulseTotal);
+        Debug.Log(" they should be moving away now");
+        // figure out what normal needs to be used for the collision
+
     }
 }
+
 
 
 
@@ -120,4 +134,6 @@ public class SATObj
     public List<Vector3> normals = new List<Vector3>();
     public List<Vector3> wVertices = new List<Vector3>();
     public bool ismmoveable;
+    public float restitution;
+    public float mass;
 }

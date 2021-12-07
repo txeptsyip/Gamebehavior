@@ -252,6 +252,8 @@ MonoBehaviour:
     normals: []
     wVertices: []
     ismmoveable: 0
+    restitution: 1
+    mass: 1
   isrect: 1
   wVertices: []
   dotproducts: []
@@ -318,13 +320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SATobjinspace: []
-  tempnormals: []
   dotproducts: []
-  aMin: 5000
-  aMax: 5001
-  bMin: 6000
-  bMax: 6001
-  mousepos: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,6 +533,8 @@ MonoBehaviour:
     normals: []
     wVertices: []
     ismmoveable: 1
+    restitution: 1
+    mass: 1
   isrect: 1
   wVertices: []
   dotproducts: []
