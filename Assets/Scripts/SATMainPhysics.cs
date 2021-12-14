@@ -100,7 +100,7 @@ public class SATMainPhysics : MonoBehaviour
     void docollision(int a , int b)
     {
         Vector3 relativeV = SATobjinspace[b].satobj.Velocity - SATobjinspace[a].satobj.Velocity;
-        Vector3 cNormal = (SATobjinspace[b].satobj.position - SATobjinspace[b].satobj.position).normalized;
+        Vector3 cNormal = (SATobjinspace[b].transform.position - SATobjinspace[a].transform.position).normalized;
         float velANorm = Vector3.Dot(relativeV, cNormal);
         if (velANorm > 0) 
         { 
@@ -109,6 +109,7 @@ public class SATMainPhysics : MonoBehaviour
         }
         float restitution = Mathf.Min(SATobjinspace[a].satobj.restitution, SATobjinspace[b].satobj.restitution);
         float IScale = -(1 - restitution) * velANorm;
+
         IScale /= (1 / SATobjinspace[a].satobj.mass) + (1 / SATobjinspace[b].satobj.mass);
         Vector3 impulseTotal = IScale * cNormal;
         SATobjinspace[a].satobj.Velocity = -(1 / SATobjinspace[a].satobj.mass * impulseTotal);

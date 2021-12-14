@@ -62,6 +62,7 @@
     <Compile Include="Assets\Scripts\RectPhysObj.cs" />
     <Compile Include="Assets\Scripts\SATPhysObj.cs" />
     <Compile Include="Assets\Scripts\SATMainPhysics.cs" />
+    <Compile Include="Assets\Scripts\AIscript.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
