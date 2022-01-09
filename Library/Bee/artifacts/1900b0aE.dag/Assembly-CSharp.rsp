@@ -342,6 +342,8 @@
 "Assets/Scripts/mainphysics.cs"
 "Assets/Scripts/mousescriptthing.cs"
 "Assets/Scripts/Node.cs"
+"Assets/Scripts/Obstacle.cs"
+"Assets/Scripts/Obstacles.cs"
 "Assets/Scripts/PhysicsObject.cs"
 "Assets/Scripts/RectPhysObj.cs"
 "Assets/Scripts/SATMainPhysics.cs"

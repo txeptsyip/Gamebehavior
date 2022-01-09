@@ -20,6 +20,10 @@ public class Obstacle : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+    }
+
     public bool checkobstacle(float nodesize, Vector3 worldposition)
     {
         float height = nodesize, width = nodesize;
@@ -30,7 +34,7 @@ public class Obstacle : MonoBehaviour
         for (int a = 0; a < obsinspace.Count; a++)
         {
             var shapeA = obsinspace[a];
-            if (shapeA.aObstacle.xmax > xmin && shapeA.aObstacle.xmin < xmax && shapeA.aObstacle.ymax > ymin && shapeA.aObstacle.ymin < ymax)
+            if (shapeA.anObstacle.xmax > xmin && shapeA.anObstacle.xmin < xmax && shapeA.anObstacle.ymax > ymin && shapeA.anObstacle.ymin < ymax)
             {
                 return true;
             }

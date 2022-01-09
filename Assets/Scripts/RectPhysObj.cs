@@ -11,7 +11,6 @@ public class RectPhysObj : MonoBehaviour
     void Start()
     {
         mainphysics.instance.rectinspace.Add(this);
-
     }
 
     // update is called once per frame

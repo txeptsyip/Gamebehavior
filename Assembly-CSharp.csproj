@@ -57,16 +57,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\AIscript.cs" />
+    <Compile Include="Assets\Scripts\Node.cs" />
     <Compile Include="Assets\Scripts\mousescriptthing.cs" />
     <Compile Include="Assets\Scripts\mainphysics.cs" />
     <Compile Include="Assets\Scripts\PhysicsObject.cs" />
     <Compile Include="Assets\Scripts\RectPhysObj.cs" />
+    <Compile Include="Assets\Scripts\Astargridscript.cs" />
+    <Compile Include="Assets\Scripts\Obstacles.cs" />
     <Compile Include="Assets\Scripts\SATPhysObj.cs" />
     <Compile Include="Assets\Scripts\SATMainPhysics.cs" />
-    <Compile Include="Assets\Scripts\Astargridscript.cs" />
-    <Compile Include="Assets\Scripts\Node.cs" />
     <Compile Include="Assets\Scripts\Obstacle.cs" />
-    <Compile Include="Assets\Scripts\Obstacles.cs" />
+    <Compile Include="Assets\Scripts\pathfinder.cs" />
+    <Compile Include="Assets\Scripts\Heap.cs" />
+    <Compile Include="Assets\Scripts\Path.cs" />
+    <Compile Include="Assets\Scripts\Unit.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

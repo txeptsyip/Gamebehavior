@@ -1,31 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Obstacles : MonoBehaviour
 {
-
-    public AObstacle aObstacle;
+    public AObstacle anObstacle;
 
     void Start()
     {
         Obstacle.instance.obsinspace.Add(this);
+        anObstacle.position = transform.position;
+        anObstacle.width = (transform.localScale.x);
+        anObstacle.height = (transform.localScale.y);
+        anObstacle.ymin = transform.localPosition.y - (anObstacle.height / 2);
+        anObstacle.ymax = transform.localPosition.y + (anObstacle.height / 2);
+        anObstacle.xmin = transform.localPosition.x - (anObstacle.width / 2);
+        anObstacle.xmax = transform.localPosition.x + (anObstacle.width / 2);
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        aObstacle.position = transform.position;
-        aObstacle.width = (transform.localScale.x);
-        aObstacle.height = (transform.localScale.y);
-        aObstacle.ymin = transform.localPosition.y - (aObstacle.width / 2);
-        aObstacle.ymax = transform.localPosition.y + (aObstacle.width / 2);
-        aObstacle.xmin = transform.localPosition.x - (aObstacle.height / 2);
-        aObstacle.xmax = transform.localPosition.x + (aObstacle.height / 2);
+        anObstacle.position = transform.position;
+        anObstacle.width = (transform.localScale.x);
+        anObstacle.height = (transform.localScale.y);
+        anObstacle.ymin = transform.localPosition.y - (anObstacle.width / 2);
+        anObstacle.ymax = transform.localPosition.y + (anObstacle.width / 2);
+        anObstacle.xmin = transform.localPosition.x - (anObstacle.height / 2);
+        anObstacle.xmax = transform.localPosition.x + (anObstacle.height / 2);
     }
 
-    
+
 
     void OnDestroy()
     {
