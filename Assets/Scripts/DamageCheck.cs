@@ -30,7 +30,11 @@ public class DamageCheck : MonoBehaviour
                 {
                     var current = obsinspace[a];
                     var other = obsinspace[b];
-                    if (current.damageObj.isBullet == false && other.damageObj.isBullet == false)
+                    if (current.damageObj.isBullet == true && other.damageObj.isBullet == true)
+                    {
+                        break;
+                    }
+                    else
                     {
                         dmgcolliding(current.damageObj, other.damageObj);
                     }
@@ -42,7 +46,8 @@ public class DamageCheck : MonoBehaviour
     {
         if (shapeA.xmax > shapeB.xmin && shapeA.xmin < shapeB.xmax && shapeA.ymax > shapeB.ymin && shapeA.ymin < shapeB.ymax)
         {
-            Debug.Log("damage");
+            shapeA.health = shapeA.health - shapeB.damage;
+            shapeB.health = shapeB.health - shapeA.damage;
         }
     }
 }

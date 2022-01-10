@@ -23,7 +23,20 @@ public class Damageobj : MonoBehaviour
 
     private void Update()
     {
+        damageObj.position = transform.position;
+        damageObj.width = (transform.GetComponent<SpriteRenderer>().bounds.size.x);
+        damageObj.height = (transform.GetComponent<SpriteRenderer>().bounds.size.y);
+        //anObstacle.width = (transform.localScale.x);
+        //anObstacle.height = (transform.localScale.y);
+        damageObj.ymin = transform.localPosition.y - (damageObj.height / 2);
+        damageObj.ymax = transform.localPosition.y + (damageObj.height / 2);
+        damageObj.xmin = transform.localPosition.x - (damageObj.width / 2);
+        damageObj.xmax = transform.localPosition.x + (damageObj.width / 2);
         transform.position += damageObj.velocity * Time.deltaTime;
+        if (damageObj.health < 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
 

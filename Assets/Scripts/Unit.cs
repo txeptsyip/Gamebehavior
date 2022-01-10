@@ -46,10 +46,6 @@ public class Unit : MonoBehaviour
                     path = new Vector3[0];
                     yield break;
                 }
-                Vector3 targetDir = currentWaypoint - transform.position;
-                float step = rotationSpeed * Time.deltaTime;
-                Vector3 newDir = Vector3.RotateTowards(transform.up, targetDir, step, 1.0F);
-                transform.rotation = Quaternion.LookRotation(newDir);
                 currentWaypoint = path[targetIndex];
             }
 
