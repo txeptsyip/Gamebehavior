@@ -11,25 +11,14 @@ public class Obstacles : MonoBehaviour
     {
         Obstacle.instance.obsinspace.Add(this);
         anObstacle.position = transform.position;
-        anObstacle.width = (transform.localScale.x);
-        anObstacle.height = (transform.localScale.y);
+        anObstacle.width = (transform.GetComponent<SpriteRenderer>().bounds.size.x);
+        anObstacle.height = (transform.GetComponent<SpriteRenderer>().bounds.size.y);
+        //anObstacle.width = (transform.localScale.x);
+        //anObstacle.height = (transform.localScale.y);
         anObstacle.ymin = transform.localPosition.y - (anObstacle.height / 2);
         anObstacle.ymax = transform.localPosition.y + (anObstacle.height / 2);
         anObstacle.xmin = transform.localPosition.x - (anObstacle.width / 2);
         anObstacle.xmax = transform.localPosition.x + (anObstacle.width / 2);
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        anObstacle.position = transform.position;
-        anObstacle.width = (transform.localScale.x);
-        anObstacle.height = (transform.localScale.y);
-        anObstacle.ymin = transform.localPosition.y - (anObstacle.width / 2);
-        anObstacle.ymax = transform.localPosition.y + (anObstacle.width / 2);
-        anObstacle.xmin = transform.localPosition.x - (anObstacle.height / 2);
-        anObstacle.xmax = transform.localPosition.x + (anObstacle.height / 2);
     }
 
 

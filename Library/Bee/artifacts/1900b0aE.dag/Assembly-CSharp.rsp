@@ -341,6 +341,7 @@
 "Assets/Scripts/Astargridscript.cs"
 "Assets/Scripts/Heap.cs"
 "Assets/Scripts/mainphysics.cs"
+"Assets/Scripts/MainSpawner.cs"
 "Assets/Scripts/mousescriptthing.cs"
 "Assets/Scripts/Node.cs"
 "Assets/Scripts/Obstacle.cs"
@@ -348,10 +349,13 @@
 "Assets/Scripts/Path.cs"
 "Assets/Scripts/pathfinder.cs"
 "Assets/Scripts/PhysicsObject.cs"
+"Assets/Scripts/Playerscript.cs"
 "Assets/Scripts/RectPhysObj.cs"
 "Assets/Scripts/SATMainPhysics.cs"
 "Assets/Scripts/SATPhysObj.cs"
 "Assets/Scripts/Unit.cs"
+"Assets/Scripts/weapon.cs"
+"Assets/SelfDestruct.cs"
 -langversion:8.0
 
 /deterministic
