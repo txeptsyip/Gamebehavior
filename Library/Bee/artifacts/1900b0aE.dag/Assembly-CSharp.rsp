@@ -339,15 +339,19 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/VSSettingsProvider.ref.dll"
 "Assets/Scripts/AIscript.cs"
 "Assets/Scripts/Astargridscript.cs"
+"Assets/Scripts/Heap.cs"
 "Assets/Scripts/mainphysics.cs"
 "Assets/Scripts/mousescriptthing.cs"
 "Assets/Scripts/Node.cs"
 "Assets/Scripts/Obstacle.cs"
 "Assets/Scripts/Obstacles.cs"
+"Assets/Scripts/Path.cs"
+"Assets/Scripts/pathfinder.cs"
 "Assets/Scripts/PhysicsObject.cs"
 "Assets/Scripts/RectPhysObj.cs"
 "Assets/Scripts/SATMainPhysics.cs"
 "Assets/Scripts/SATPhysObj.cs"
+"Assets/Scripts/Unit.cs"
 -langversion:8.0
 
 /deterministic

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// https://www.youtube.com/playlist?list=PLFt_AvWsXl0cq5Umv3pMC9SPnKjfp9eGW unity 3D pathfinding tutorial series from 7 years ago
 public class Astargridscript : MonoBehaviour
 {
     public Vector3 gridsizeworld;
@@ -70,6 +70,8 @@ public class Astargridscript : MonoBehaviour
             for (int y = 0; y < gridsizeY; y++)
             {
                 Vector3 worldpoint = bottomleft + Vector3.right * (x * nodesize + halfnode) + Vector3.up * (y * nodesize + halfnode);
+// current problem, only one obstacle item is coming up as being a blocker according to the gizmos after computer restart copying the one working blocker worked and making new ones also worked so
+// evidently a unity issue of some form (didn't save correctly?)
                 bool noobstacle = !(Obstacle.instance.checkobstacle(halfnode, worldpoint));
                 // uses AABB collision to set the blockers as i'm working with a square grid and this can be disguised by the use of multiple sprites
                 // also AABB is really fast and the amount of grid squares are probably going to make anything more complicated a nightmare
@@ -79,26 +81,26 @@ public class Astargridscript : MonoBehaviour
         }
     }
     public List<Node> path;
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireCube(transform.position, new Vector3(gridsizeworld.x, gridsizeworld.y, 1));
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawWireCube(transform.position, new Vector3(gridsizeworld.x, gridsizeworld.y, 1));
 
-        if (grid != null)
-        {
-            foreach (Node n in grid)
-            {
-                Gizmos.color = (n.hasobstacle) ? Color.white : Color.red;
-                if (path != null)
-                {
-                    if (path.Contains(n))
-                    {
-                        Gizmos.color = Color.black;
-                    }
-                }
-                Gizmos.DrawCube(n.positioninworld, Vector3.one * (nodesize-.1f));
-            }
-        }    
-    }
+    //    if (grid != null)
+    //    {
+    //        foreach (Node n in grid)
+    //        {
+    //            Gizmos.color = (n.hasobstacle) ? Color.white : Color.red;
+    //            if (path != null)
+    //            {
+    //                if (path.Contains(n))
+    //                {
+    //                    Gizmos.color = Color.black;
+    //                }
+    //            }
+    //            Gizmos.DrawCube(n.positioninworld, new Vector3(1,1,0) * (nodesize-.1f));
+    //        }
+    //    }    
+    //}
     public int MaxSize
     {
         get

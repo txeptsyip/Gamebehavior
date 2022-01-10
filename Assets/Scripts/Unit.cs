@@ -8,6 +8,8 @@ public class Unit : MonoBehaviour
     float speed = 5;
     Vector3[] path;
     int targetIndex;
+    bool ignoreblockers = false;
+
 
     private void Start()
     {
@@ -39,8 +41,26 @@ public class Unit : MonoBehaviour
                 }
                 currentWaypoint = path[targetIndex];
             }
-            transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed);
+            transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed* Time.deltaTime);
             yield return null;
+        }
+    }
+
+    public void OnDrawGizmos()
+    {
+        if (path != null)
+        {
+            for (int i = targetIndex; i > path.Length; i++)
+            {
+                Gizmos.color = Color.black;
+                Gizmos.DrawCube(path[i], new Vector3(1,1,0));
+
+                if (i == targetIndex)
+                {
+                    Gizmos.DrawLine(transform.position, path[i]);
+                }
+                else Gizmos.DrawLine(path[i - 1], path[i]);
+            }
         }
     }
 }

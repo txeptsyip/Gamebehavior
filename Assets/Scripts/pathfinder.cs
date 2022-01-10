@@ -9,16 +9,18 @@ public class pathfinder : MonoBehaviour
     Path requestmanager;
 
     Astargridscript grid;
-    void awake()
+    void Awake()
     {
         requestmanager = gameObject.GetComponent<Path>();
         grid = gameObject.GetComponent<Astargridscript>();
     }
 
-    private void Start()
-    {
-        grid = gameObject.GetComponent<Astargridscript>();
-    }
+    //private void Start()
+    //{
+    //    requestmanager = gameObject.GetComponent<Path>();
+    //    grid = gameObject.GetComponent<Astargridscript>();
+    //}
+
     IEnumerator FindPath(Vector3 startpos, Vector3 targetpos)
     {
 
@@ -27,7 +29,7 @@ public class pathfinder : MonoBehaviour
 
         List<Node> openSet = new List<Node>(grid.MaxSize);
         HashSet<Node> closedSet = new HashSet<Node>();
-        //hashset used so duplicate nodes are automatically discounted as hashset removes duplicates (duplicate nodes do not appear to be able to happen but still)
+        //hashset used so duplicate entries are automatically discounted as hashset removes duplicates
         Vector3[] waypoints = new Vector3[0];
         bool pathsuccess = false;
 
@@ -51,7 +53,7 @@ public class pathfinder : MonoBehaviour
             {
                 pathsuccess = true;
                 //RetracePath(startNode, targetNode);
-                yield break;
+                break;
             }
 
             foreach (Node nextnodes in grid.Getnextnodes(currentNode))
@@ -74,12 +76,13 @@ public class pathfinder : MonoBehaviour
                 }
             }
         }
-        yield return null;
+        //yield return null;
         if (pathsuccess)
         {
             waypoints = RetracePath(startNode, targetNode);
         }
         requestmanager.FinishedPath(waypoints, pathsuccess);
+        yield return null;
     }
 
     Vector3[] RetracePath(Node startNode, Node endNode)
@@ -98,7 +101,7 @@ public class pathfinder : MonoBehaviour
         //grid.path = path;
     }
 
-    Vector3[] simplepath(List<Node> path)
+    Vector3[] simplepath(List<Node> path) // checks direction of between waypoints if it stays the same it continues on until it finds direction change and removes the inbetween bits
     {
         List<Vector3> waypoints = new List<Vector3>();
         Vector2 olddirection = Vector2.zero;
