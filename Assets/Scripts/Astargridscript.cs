@@ -84,26 +84,26 @@ public class Astargridscript : MonoBehaviour
         }
     }
     public List<Node> path;
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireCube(transform.position, new Vector3(gridsizeworld.x, gridsizeworld.y, 1));
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawWireCube(transform.position, new Vector3(gridsizeworld.x, gridsizeworld.y, 1));
 
-        if (grid != null)
-        {
-            foreach (Node n in grid)
-            {
-                Gizmos.color = (n.hasobstacle) ? Color.white : Color.red;
-                if (path != null)
-                {
-                    if (path.Contains(n))
-                    {
-                        Gizmos.color = Color.black;
-                    }
-                }
-                Gizmos.DrawCube(n.positioninworld, new Vector3(1, 1, 0) * (nodesize - .1f));
-            }
-        }
-    }
+    //    if (grid != null)
+    //    {
+    //        foreach (Node n in grid)
+    //        {
+    //            Gizmos.color = (n.hasobstacle) ? Color.white : Color.red;
+    //            if (path != null)
+    //            {
+    //                if (path.Contains(n))
+    //                {
+    //                    Gizmos.color = Color.black;
+    //                }
+    //            }
+    //            Gizmos.DrawCube(n.positioninworld, new Vector3(1, 1, 0) * (nodesize - .1f));
+    //        }
+    //    }
+    //}
     public int MaxSize
     {
         get

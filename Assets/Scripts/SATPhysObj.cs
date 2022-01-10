@@ -7,9 +7,11 @@ public class SATPhysObj : MonoBehaviour
     public SATObj satobj;
     public bool isrect; // check this if shape is rect, to add thing to calculate corners when true
                         // Start is called before the first frame update
-
+    private bool iscolliding;
 
     public List<float> dotproducts = new List<float>();
+
+    public bool Iscolliding { get => iscolliding; set => iscolliding = value; }
 
     void Start()
     {
@@ -31,36 +33,39 @@ public class SATPhysObj : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int b = 0; b < satobj.vertices.Count; b++)
-        {
-            satobj.wVertices[b] = satobj.vertices[b] + transform.position;
-        }    
-        satobj.normals.Clear();
-        for (int a = 0; a < satobj.vertices.Count; a++)
-        {
-            satobj.normals.Add(satobj.wVertices[(a + 1) % satobj.wVertices.Count] - satobj.wVertices[a]);
-            satobj.normals[a] = new Vector3(satobj.normals[a].y * -1, satobj.normals[a].x);
-            satobj.normals[a] = satobj.normals[a].normalized;
-        }
-        dotproducts.Clear();
-        for (int a=0; a < satobj.normals.Count; a++)
-        {
-            for (int b = 0; b < satobj.wVertices.Count; b ++)
+
+
+            for (int b = 0; b < satobj.vertices.Count; b++)
             {
-                dotproducts.Add(Vector3.Dot(satobj.normals[a], satobj.wVertices[b]));
+                satobj.wVertices[b] = satobj.vertices[b] + transform.position;
+            }
+            satobj.normals.Clear();
+            for (int a = 0; a < satobj.vertices.Count; a++)
+            {
+                satobj.normals.Add(satobj.wVertices[(a + 1) % satobj.wVertices.Count] - satobj.wVertices[a]);
+                satobj.normals[a] = new Vector3(satobj.normals[a].y * -1, satobj.normals[a].x);
+                satobj.normals[a] = satobj.normals[a].normalized;
+            }
+            dotproducts.Clear();
+            for (int a = 0; a < satobj.normals.Count; a++)
+            {
+                for (int b = 0; b < satobj.wVertices.Count; b++)
+                {
+                    dotproducts.Add(Vector3.Dot(satobj.normals[a], satobj.wVertices[b]));
+                }
+
+            }
+            transform.position = new Vector3(transform.position.x + (satobj.Velocity.x * Time.fixedDeltaTime), transform.position.y + (satobj.Velocity.y * Time.fixedDeltaTime), 0);
+
+
+            satobj.Velocity.x = (1 - (satobj.Drag * Time.fixedDeltaTime)) * satobj.Velocity.x;
+            satobj.Velocity.y = (1 - (satobj.Drag * Time.fixedDeltaTime)) * satobj.Velocity.y;
+            if ((Mathf.Abs(satobj.Velocity.x) < 0.0001) && (Mathf.Abs(satobj.Velocity.y) < 0.0001))
+            {
+                satobj.Velocity.x = 0;
+                satobj.Velocity.y = 0;
             }
 
-        }
-        transform.position = new Vector3(transform.position.x + (satobj.Velocity.x * Time.fixedDeltaTime), transform.position.y + (satobj.Velocity.y * Time.fixedDeltaTime), 0);
-
-
-        satobj.Velocity.x = (1 - (satobj.Drag * Time.fixedDeltaTime)) * satobj.Velocity.x;
-        satobj.Velocity.y = (1 - (satobj.Drag * Time.fixedDeltaTime)) * satobj.Velocity.y;
-        if ((Mathf.Abs(satobj.Velocity.x) < 0.0001) && (Mathf.Abs(satobj.Velocity.y) < 0.0001))
-        {
-            satobj.Velocity.x = 0;
-            satobj.Velocity.y = 0;
-        }
     }
 
     void OnDestroy()

@@ -4,12 +4,16 @@ using UnityEngine;
 [DefaultExecutionOrder(101)]
 public class Unit : MonoBehaviour
 {
+    private float health;
     public Transform target;
     public float speed = 5;
+    private float rotationSpeed;
     Vector3[] path;
     int targetIndex;
     bool ignoreblockers = false;
 
+    public float Health { get => health; set => health = value; }
+    public float RotationSpeed { get => rotationSpeed; set => rotationSpeed = value; }
 
     private void Start()
     {
@@ -27,6 +31,7 @@ public class Unit : MonoBehaviour
         }
     }
 
+
     IEnumerator FollowPath()
     {
         Vector3 currentWaypoint = path[0];
@@ -37,10 +42,17 @@ public class Unit : MonoBehaviour
                 targetIndex++;
                 if (targetIndex >= path.Length)
                 {
+                    targetIndex = 0;
+                    path = new Vector3[0];
                     yield break;
                 }
+                Vector3 targetDir = currentWaypoint - transform.position;
+                float step = rotationSpeed * Time.deltaTime;
+                Vector3 newDir = Vector3.RotateTowards(transform.up, targetDir, step, 1.0F);
+                transform.rotation = Quaternion.LookRotation(newDir);
                 currentWaypoint = path[targetIndex];
             }
+
             transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed* Time.deltaTime);
             yield return null;
         }

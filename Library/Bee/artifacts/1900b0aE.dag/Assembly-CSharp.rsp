@@ -353,9 +353,9 @@
 "Assets/Scripts/RectPhysObj.cs"
 "Assets/Scripts/SATMainPhysics.cs"
 "Assets/Scripts/SATPhysObj.cs"
+"Assets/Scripts/SelfDestruct.cs"
 "Assets/Scripts/Unit.cs"
 "Assets/Scripts/weapon.cs"
-"Assets/SelfDestruct.cs"
 -langversion:8.0
 
 /deterministic

@@ -35,7 +35,6 @@ public class SATMainPhysics : MonoBehaviour
         {
             mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousepos.z = 0;
-            Debug.Log(mousepos);
             for (int a = 0; a < SATobjinspace.Count; a++)
             {
                 if (SATobjinspace[a].satobj.ismmoveable == true)
@@ -81,14 +80,15 @@ public class SATMainPhysics : MonoBehaviour
                         {
                             if (tempnormals[c] == tempnormals.Last())
                             {
-                                collision = true;
-                                Debug.Log("colliding");
+                                SATobjinspace[a].Iscolliding = true;
+                                SATobjinspace[b].Iscolliding = true;
                                 docollision(a, b);
                             }
                         }
                         else
                         {
-                            collision = false;
+                            SATobjinspace[a].Iscolliding = false;
+                            SATobjinspace[b].Iscolliding = false;
                             break;
                         }
                     }
@@ -127,14 +127,14 @@ public class SATMainPhysics : MonoBehaviour
 public class SATObj
 {
     public Vector3 position;
-    public Vector3 Velocity;
-    public float Drag;
+    public Vector3 Velocity = Vector3.zero;
+    public float Drag=0;
     public List<Vector3> vertices = new List<Vector3>();
     public float width;
     public float height;
     public List<Vector3> normals = new List<Vector3>();
     public List<Vector3> wVertices = new List<Vector3>();
     public bool ismmoveable;
-    public float restitution;
-    public float mass;
+    public float restitution=0;
+    public float mass=0;
 }

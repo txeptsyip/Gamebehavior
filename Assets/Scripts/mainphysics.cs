@@ -41,7 +41,6 @@ public class mainphysics : MonoBehaviour
                     var intersecting = Colliding(current.circle, other.circle);
                     if (intersecting)
                     {
-                        Debug.Log("intersecting");
                     }
                 }
             }
@@ -57,7 +56,7 @@ public class mainphysics : MonoBehaviour
                     var intersecting = RectColliding(current.rectangle, other.rectangle);
                     if (intersecting)
                     {
-                        Debug.Log("intersecting");
+
                     }
                 }
             }
