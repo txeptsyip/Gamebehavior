@@ -67,9 +67,12 @@ MonoBehaviour:
     ymin: 1
     width: 1
     height: 1
-    health: 1
-    damage: 10
+    Health: 1
+    damage: 1
     isBullet: 1
+    isEnemy: 0
+    isEBullet: 0
+    isplayer: 0
 --- !u!212 &1442238320013195540
 SpriteRenderer:
   m_ObjectHideFlags: 0

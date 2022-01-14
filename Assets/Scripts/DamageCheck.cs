@@ -34,6 +34,18 @@ public class DamageCheck : MonoBehaviour
                     {
                         break;
                     }
+                    else if (current.damageObj.isEBullet == true && other.damageObj.isEBullet == true)
+                    {
+                        break;
+                    }
+                    else if (current.damageObj.isplayer== true && other.damageObj.isBullet == true)
+                    {
+                        break;
+                    }
+                    else if (current.damageObj.isEnemy == true && other.damageObj.isEBullet == true)
+                    {
+                        break;
+                    }
                     else
                     {
                         dmgcolliding(current.damageObj, other.damageObj);
@@ -46,8 +58,8 @@ public class DamageCheck : MonoBehaviour
     {
         if (shapeA.xmax > shapeB.xmin && shapeA.xmin < shapeB.xmax && shapeA.ymax > shapeB.ymin && shapeA.ymin < shapeB.ymax)
         {
-            shapeA.health = shapeA.health - shapeB.damage;
-            shapeB.health = shapeB.health - shapeA.damage;
+            shapeA.Health = shapeA.Health - shapeB.damage;
+            shapeB.Health = shapeB.Health - shapeA.damage;
         }
     }
 }
@@ -63,7 +75,11 @@ public class damageobj
     public float ymin = 1f;
     public float width = 1f;
     public float height = 1f;
-    public float health;
+    public float Health;
     public float damage;
     public bool isBullet;
+    public bool isEnemy;
+    public bool isEBullet;
+    public bool isplayer;
+    public bool istargeted;
 }

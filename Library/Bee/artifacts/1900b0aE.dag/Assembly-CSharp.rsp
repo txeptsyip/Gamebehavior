@@ -342,6 +342,8 @@
 "Assets/Scripts/Astargridscript.cs"
 "Assets/Scripts/DamageCheck.cs"
 "Assets/Scripts/Damageobj.cs"
+"Assets/Scripts/Enemy weapons/Standardshot.cs"
+"Assets/Scripts/Enemy weapons/Targetedshot.cs"
 "Assets/Scripts/Heap.cs"
 "Assets/Scripts/mainphysics.cs"
 "Assets/Scripts/MainSpawner.cs"
@@ -352,13 +354,13 @@
 "Assets/Scripts/Path.cs"
 "Assets/Scripts/pathfinder.cs"
 "Assets/Scripts/PhysicsObject.cs"
-"Assets/Scripts/Playerscript.cs"
+"Assets/Scripts/Player/Playerscript.cs"
+"Assets/Scripts/Player/weapon.cs"
 "Assets/Scripts/RectPhysObj.cs"
 "Assets/Scripts/SATMainPhysics.cs"
 "Assets/Scripts/SATPhysObj.cs"
 "Assets/Scripts/SelfDestruct.cs"
 "Assets/Scripts/Unit.cs"
-"Assets/Scripts/weapon.cs"
 -langversion:8.0
 
 /deterministic

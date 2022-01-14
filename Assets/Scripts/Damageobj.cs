@@ -6,6 +6,8 @@ using System;
 public class Damageobj : MonoBehaviour
 {
     public damageobj damageObj;
+    GameObject target;
+    Vector3 direction;
 
     void Start()
     {
@@ -21,6 +23,21 @@ public class Damageobj : MonoBehaviour
         damageObj.xmax = transform.localPosition.x + (damageObj.width / 2);
     }
 
+    private void Awake()
+    {
+        if (damageObj.istargeted == true)
+        {
+            target = GameObject.FindWithTag("Player");
+            direction = (this.transform.position - target.transform.position).normalized;
+            Debug.Log(direction);
+            direction.z = 0;
+            direction.x = -Mathf.Abs(direction.x);
+            //direction.x += direction.x * 3;
+            direction.y = -Mathf.Abs(direction.y);
+            this.damageObj.velocity = direction;
+        }
+    }
+
     private void Update()
     {
         damageObj.position = transform.position;
@@ -33,7 +50,7 @@ public class Damageobj : MonoBehaviour
         damageObj.xmin = transform.localPosition.x - (damageObj.width / 2);
         damageObj.xmax = transform.localPosition.x + (damageObj.width / 2);
         transform.position += damageObj.velocity * Time.deltaTime;
-        if (damageObj.health < 0)
+        if (damageObj.Health < 0)
         {
             Destroy(gameObject);
         }

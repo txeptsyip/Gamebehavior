@@ -27,9 +27,6 @@ public class MainSpawner : MonoBehaviour
                 Vector3 rndPoint3D = RandomPointInBounds(thing.bounds, 1f);
                 Vector2 rndPoint2D = new Vector2(rndPoint3D.x, rndPoint3D.y);
                 rpoint.position = rndPoint2D;
-                //GameObject rndCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                //rndCube.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-                //rndCube.transform.position = rndPoint2D;
                 int s = Random.Range(0,ships.Count);
                 Instantiate(ships[s], rndPoint2D, rpoint.rotation);
                 i++;
