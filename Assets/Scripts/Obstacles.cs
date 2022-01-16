@@ -6,7 +6,7 @@ using System;
 public class Obstacles : MonoBehaviour
 {
     public AObstacle anObstacle;
-
+    // name is wrong this should obstacle but i'm really good at naming things - this script is added to a sprite that is to be an obastacle for the pathfinding
     void Start()
     {
         Obstacle.instance.obsinspace.Add(this);

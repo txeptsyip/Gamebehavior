@@ -28,13 +28,14 @@ public class Damageobj : MonoBehaviour
         if (damageObj.istargeted == true)
         {
             target = GameObject.FindWithTag("Player");
-            direction = (this.transform.position - target.transform.position).normalized;
-            Debug.Log(direction);
+            direction = (this.transform.position - target.transform.position);
+
             direction.z = 0;
-            direction.x = -Mathf.Abs(direction.x);
+            direction.x = direction.x * -1;
             //direction.x += direction.x * 3;
             direction.y = -Mathf.Abs(direction.y);
             this.damageObj.velocity = direction;
+            Debug.Log(direction);
         }
     }
 

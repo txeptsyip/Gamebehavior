@@ -27,7 +27,8 @@ public class pathfinder : MonoBehaviour
         Node startNode = grid.nodefromworld(startpos);
         Node targetNode = grid.nodefromworld(targetpos);
 
-        List<Node> openSet = new List<Node>(grid.MaxSize);
+        Heap<Node> openSet = new Heap<Node>(grid.MaxSize);
+        //List<Node> openSet = new List<Node>(grid.MaxSize);
         HashSet<Node> closedSet = new HashSet<Node>();
         //hashset used so duplicate entries are automatically discounted as hashset removes duplicates
         Vector3[] waypoints = new Vector3[0];
@@ -38,15 +39,16 @@ public class pathfinder : MonoBehaviour
 
         while (openSet.Count > 0)
         {
-            Node currentNode = openSet[0];
-            for (int i = 1; i < openSet.Count; i++)
-            {
-                if (openSet[i].f < currentNode.f || openSet[i].f == currentNode.f && openSet[i].h < currentNode.h)
-                {
-                    currentNode = openSet[i];
-                }
-            }
-            openSet.Remove(currentNode);
+            Node currentNode = openSet.RemoveFirst();
+            //Node currentNode = openSet[0];
+            //for (int i = 1; i < openSet.Count; i++)
+            //{
+            //    if (openSet[i].f < currentNode.f || openSet[i].f == currentNode.f && openSet[i].h < currentNode.h)
+            //    {
+            //        currentNode = openSet[i];
+            //    }
+            //}
+            //openSet.Remove(currentNode);
             closedSet.Add(currentNode);
 
             if (currentNode == targetNode)

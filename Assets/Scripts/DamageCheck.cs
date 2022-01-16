@@ -26,30 +26,53 @@ public class DamageCheck : MonoBehaviour
         {
             for (int b = 0; b < obsinspace.Count; b++)
             {
-                if (a != b)
+                var current = obsinspace[a];
+                var other = obsinspace[b];
+                if (a == b)
                 {
-                    var current = obsinspace[a];
-                    var other = obsinspace[b];
-                    if (current.damageObj.isBullet == true && other.damageObj.isBullet == true)
-                    {
-                        break;
-                    }
-                    else if (current.damageObj.isEBullet == true && other.damageObj.isEBullet == true)
-                    {
-                        break;
-                    }
-                    else if (current.damageObj.isplayer== true && other.damageObj.isBullet == true)
-                    {
-                        break;
-                    }
-                    else if (current.damageObj.isEnemy == true && other.damageObj.isEBullet == true)
-                    {
-                        break;
-                    }
-                    else
-                    {
+                    break;
+                }
+                else if (current.damageObj.isBullet == true && other.damageObj.isBullet == true)
+                {
+                    break;
+                }
+                else if (current.damageObj.isEBullet == true && other.damageObj.isEBullet == true)
+                {
+                    break;
+                }
+                else if (current.damageObj.isplayer == true && other.damageObj.isBullet == true)
+                {
+                    break;
+                }
+                else if (current.damageObj.isEnemy == true && other.damageObj.isEBullet == true)
+                {
+                    break;
+                }
+                else 
+                {
+                    //var current = obsinspace[a];
+                    //var other = obsinspace[b];
+                    //if (current.damageObj.isBullet == true && other.damageObj.isBullet == true)
+                    //{
+                    //    break;
+                    //}
+                    //else if (current.damageObj.isEBullet == true && other.damageObj.isEBullet == true)
+                    //{
+                    //    break;
+                    //}
+                    //else if (current.damageObj.isplayer== true && other.damageObj.isBullet == true)
+                    //{
+                    //    break;
+                    //}
+                    //else if (current.damageObj.isEnemy == true && other.damageObj.isEBullet == true)
+                    //{
+                    //    break;
+                    //}
+                    // so those else ifs are there to try and make sure that theres no friendly fire or bullets destroying bullets - it ain't working though
+                    //else
+                    //{
                         dmgcolliding(current.damageObj, other.damageObj);
-                    }
+                    //}
                 }
             }
         }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
+    // this one handles the stuff the boats have to navigate around (its used to do a physics check on the pathfinding grid at start - does mean the terrain has to be static and cannot move though)
     public static Obstacle instance;
 
     public List<Obstacles> obsinspace = new List<Obstacles>();

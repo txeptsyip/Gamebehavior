@@ -30,9 +30,13 @@ public class Standardshot : MonoBehaviour
         timer = 0f;
         Debug.Log(firepoint.Count);
         int i = 0;
-
+        // so when I try and get this to just iterate though the firepoints it fails to work?
+        // I can't be having a script for each ship with its fire points or a script per fire point this code is a clusterfuck enough as it is
+        while (i < firepoint.Count)
+        {
             Debug.Log("trying to shoot");
-            Instantiate(bulletPrefab, firepoint[0].transform.position, firepoint[0].transform.rotation);
-
+            Instantiate(bulletPrefab, firepoint[i].transform.position, firepoint[i].transform.rotation);
+            i++;
+        }
     }
 }

@@ -67,7 +67,9 @@
     <Compile Include="Assets\Scripts\MainSpawner.cs" />
     <Compile Include="Assets\Scripts\PhysicsObject.cs" />
     <Compile Include="Assets\Scripts\Unit.cs" />
+    <Compile Include="Assets\Scripts\Enemy weapons\Standardshot.cs" />
     <Compile Include="Assets\Scripts\RectPhysObj.cs" />
+    <Compile Include="Assets\Scripts\Enemy weapons\Targetedshot.cs" />
     <Compile Include="Assets\Scripts\Astargridscript.cs" />
     <Compile Include="Assets\Scripts\Obstacles.cs" />
     <Compile Include="Assets\Scripts\pathfinder.cs" />
@@ -78,8 +80,6 @@
     <Compile Include="Assets\Scripts\SATMainPhysics.cs" />
     <Compile Include="Assets\Scripts\Obstacle.cs" />
     <Compile Include="Assets\Scripts\Player\weapon.cs" />
-    <Compile Include="Assets\Scripts\Enemy weapons\Standardshot.cs" />
-    <Compile Include="Assets\Scripts\Enemy weapons\Targetedshot.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

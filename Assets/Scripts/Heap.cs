@@ -1,15 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System;
 
 public class Heap<T> where T : IHeapItem<T>
 {
     //code adapted from https://www.youtube.com/watch?v=3Dw5d7PlcTM
-    // basically creates a binary tree
+    // basically creates a binary tree in an array where position 0 is the parent node of positions 1 and 2
 
-    // not used because it actually ends up making long paths slower and causes them to meander about something chronic
-    //(path from the top to bottom of an 18 X 200 sized grid with a node size of .3 took 18ms without this and 26 with)
+    //parent = (n-1)/2 Lchild = 2n+1 Rchild = 2n+2 so node 14 is the child of 6 and the parent of 29 and 30 (2X14 = 28 +1 for 29 and +2 for 30)
+
+    // for some reason this causes the path to meander about I think its a problem with how I find the next nodes
+    //(i'm thinking its getting the very first F value thats low and is not checking for the H value if two are the same but I did not have enough time to work this out)
     T[] items;
     int currentCount;
 
@@ -17,7 +16,7 @@ public class Heap<T> where T : IHeapItem<T>
     {
         items = new T[maxSize];
     }
-
+    
     public void Add(T item)
     {
         item.HeapIndex = currentCount;
@@ -85,23 +84,23 @@ public class Heap<T> where T : IHeapItem<T>
     {
         return Equals(items[item.HeapIndex], item);
     }
-        void SortUp(T item)
-        {
-            int parentIndex = (item.HeapIndex - 1) / 2;
+    void SortUp(T item)
+    {
+        int parentIndex = (item.HeapIndex - 1) / 2;
 
-            while (true)
+        while (true)
+        {
+            T parentItem = items[parentIndex];
+            if (item.CompareTo(parentItem) > 0)
             {
-                T parentItem = items[parentIndex];
-                if (item.CompareTo(parentItem) > 0)
-                {
-                    swap(item, parentItem);
-                }
-                else
-                {
-                    break;
-                }
+                swap(item, parentItem);
+            }
+            else
+            {
+                break;
             }
         }
+    }
 
         void swap(T itemA, T itemB)
         {
