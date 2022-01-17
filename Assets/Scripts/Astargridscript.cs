@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+// https://www.youtube.com/watch?v=FQsHjAuVkIs&list=LL pyphon A* tutorial
 // https://www.youtube.com/playlist?list=PLFt_AvWsXl0cq5Umv3pMC9SPnKjfp9eGW unity 3D pathfinding tutorial series from 7 years ago
 [DefaultExecutionOrder(100)]
 public class Astargridscript : MonoBehaviour
@@ -84,26 +85,26 @@ public class Astargridscript : MonoBehaviour
         }
     }
     public List<Node> path;
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.DrawWireCube(transform.position, new Vector3(gridsizeworld.x, gridsizeworld.y, 1));
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(transform.position, new Vector3(gridsizeworld.x, gridsizeworld.y, 1));
 
-    //    if (grid != null)
-    //    {
-    //        foreach (Node n in grid)
-    //        {
-    //            Gizmos.color = (n.hasobstacle) ? Color.white : Color.red;
-    //            if (path != null)
-    //            {
-    //                if (path.Contains(n))
-    //                {
-    //                    Gizmos.color = Color.black;
-    //                }
-    //            }
-    //            Gizmos.DrawCube(n.positioninworld, new Vector3(1, 1, 0) * (nodesize - .1f));
-    //        }
-    //    }
-    //}
+        if (grid != null)
+        {
+            foreach (Node n in grid)
+            {
+                Gizmos.color = (n.hasobstacle) ? Color.white : Color.red;
+                if (path != null)
+                {
+                    if (path.Contains(n))
+                    {
+                        Gizmos.color = Color.black;
+                    }
+                }
+                Gizmos.DrawCube(n.positioninworld, new Vector3(1, 1, 0) * (nodesize - .1f));
+            }
+        }
+    }
     public int MaxSize
     {
         get

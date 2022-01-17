@@ -597,7 +597,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &157662231
 GameObject:
@@ -2130,11 +2130,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 396ec57429749d948b8b4d2b2bccb5b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UItext: {fileID: 0}
-  Speed: 15
-  Camera: {fileID: 519420031}
-  CameraSpeed: 1.5
-  Healthtext: {fileID: 664401637}
+  UiText: {fileID: 664401636}
+  speed: 15
+  camera: {fileID: 519420031}
+  cameraSpeed: 2
+  healthText: {fileID: 664401637}
 --- !u!212 &800764508
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2194,14 +2194,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800764506}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.01, y: -99, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children:
   - {fileID: 1240331612}
   - {fileID: 389200561}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &800764510
 MonoBehaviour:
@@ -2519,7 +2519,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1050008581
 GameObject:
@@ -4669,6 +4669,7 @@ GameObject:
   - component: {fileID: 1544321341}
   - component: {fileID: 1544321340}
   - component: {fileID: 1544321339}
+  - component: {fileID: 1544321343}
   m_Layer: 0
   m_Name: Seeker (1)
   m_TagString: Untagged
@@ -4780,8 +4781,36 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1544321343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544321338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faeff26a7b64f194ebd4923347ab8a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageObj:
+    velocity: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: 0}
+    xmax: 1
+    xmin: 1
+    ymax: 1
+    ymin: 1
+    width: 1
+    height: 1
+    Health: 200
+    damage: 1
+    isBullet: 0
+    isEnemy: 0
+    isEBullet: 0
+    isplayer: 0
+    istargeted: 0
 --- !u!1 &1545835786
 GameObject:
   m_ObjectHideFlags: 0
@@ -5547,7 +5576,7 @@ Transform:
   m_LocalScale: {x: 20, y: 200, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1852739585
 GameObject:
@@ -5889,7 +5918,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1938730196
 GameObject:
@@ -6290,7 +6319,7 @@ Transform:
   - {fileID: 779123219}
   - {fileID: 1583537540}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2052130149
 MonoBehaviour:
@@ -6332,6 +6361,7 @@ GameObject:
   - component: {fileID: 2099634042}
   - component: {fileID: 2099634041}
   - component: {fileID: 2099634044}
+  - component: {fileID: 2099634045}
   m_Layer: 0
   m_Name: Seeker
   m_TagString: Untagged
@@ -6417,7 +6447,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2099634044
 MonoBehaviour:
@@ -6445,6 +6475,34 @@ MonoBehaviour:
     mass: 0
   isrect: 1
   dotproducts: []
+--- !u!114 &2099634045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099634040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faeff26a7b64f194ebd4923347ab8a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageObj:
+    velocity: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: 0}
+    xmax: 1
+    xmin: 1
+    ymax: 1
+    ymin: 1
+    width: 1
+    height: 1
+    Health: 500
+    damage: 1
+    isBullet: 0
+    isEnemy: 0
+    isEBullet: 0
+    isplayer: 0
+    istargeted: 0
 --- !u!1 &2104052521
 GameObject:
   m_ObjectHideFlags: 0

@@ -73,7 +73,6 @@
     <Compile Include="Assets\Scripts\Astargridscript.cs" />
     <Compile Include="Assets\Scripts\Obstacles.cs" />
     <Compile Include="Assets\Scripts\pathfinder.cs" />
-    <Compile Include="Assets\Scripts\Player\Playerscript.cs" />
     <Compile Include="Assets\Scripts\Heap.cs" />
     <Compile Include="Assets\Scripts\SATPhysObj.cs" />
     <Compile Include="Assets\Scripts\Damageobj.cs" />
