@@ -4960,7 +4960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 150613546}
-  speed: 3
+  speed: 2
 --- !u!212 &2099634042
 SpriteRenderer:
   m_ObjectHideFlags: 0
