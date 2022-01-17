@@ -44,7 +44,10 @@ public class Playerscript : MonoBehaviour
         pos.y += Input.GetAxis("Vertical") * Speed * Time.deltaTime;
         transform.position = pos;
         screenBounds.position = (Vector2)Camera.transform.position - (screenBounds.size / 2);
-        Camera.transform.position += new Vector3(0,1 * CameraSpeed * Time.deltaTime, 0);
+        if (Camera.transform.position.y < 68)
+        {
+            Camera.transform.position += new Vector3(0, 1 * CameraSpeed * Time.deltaTime, 0);
+        }
     }
 
     void LateUpdate()
