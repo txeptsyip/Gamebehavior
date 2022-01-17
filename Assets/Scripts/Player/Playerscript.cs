@@ -49,7 +49,6 @@ public class Playerscript : MonoBehaviour
             Camera.transform.position += new Vector3(0, 1 * CameraSpeed * Time.deltaTime, 0);
         }
     }
-
     void LateUpdate()
     {
         Vector3 viewPos = transform.position;
