@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class Playerscript : MonoBehaviour
 {
     public GameObject UItext;
-    public float health = 100f;
+    // public float health = 100f;
+    // not used because... reasons i guess? i just shoehorned some health into the scripts i use for damage physics collisions like a right nutter
     public float Speed = 30f;
     public Camera Camera;
     Rect screenBounds;

@@ -32,6 +32,9 @@ public class DamageCheck : MonoBehaviour
                 {
                     break;
                 }
+                // ok so if i do a check to make sure the player cannot fucking kill themselves (current + other isplayer == true and other + current isbullet == true) then the ENEMY stop taking bullet dmg despite no check for that happening
+                // god this code is cursed I should have just modified my existing phyics to... i dunno output that a collision happened if something wants that (look into how unity oncollide or w/e its called works?)
+                // too late now though I don't even have a battlecow implemented
                 else if (current.damageObj.isBullet == true && other.damageObj.isBullet == true)
                 {
                     break;
@@ -69,6 +72,8 @@ public class DamageCheck : MonoBehaviour
                     //    break;
                     //}
                     // so those else ifs are there to try and make sure that theres no friendly fire or bullets destroying bullets - it ain't working though
+                    // figured it out I forgot I was using other and current and I would need to check against other and current then current and other, I wonder if there is a way
+                    // to just go "hey if either of these have a bool called X and is true don't do this" but NO TIME
                     //else
                     //{
                         dmgcolliding(current.damageObj, other.damageObj);
@@ -100,9 +105,9 @@ public class damageobj
     public float height = 1f;
     public float Health;
     public float damage;
-    public bool isBullet;
-    public bool isEnemy;
-    public bool isEBullet;
-    public bool isplayer;
-    public bool istargeted;
+    public bool isBullet = false;
+    public bool isEnemy = false;
+    public bool isEBullet = false;
+    public bool isplayer = false;
+    public bool istargeted = false;
 }

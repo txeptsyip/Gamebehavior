@@ -1852,8 +1852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UItext: {fileID: 0}
-  health: 100
-  Speed: 20
+  Speed: 15
   Camera: {fileID: 519420031}
   CameraSpeed: 1.5
   Healthtext: {fileID: 664401637}
@@ -1940,6 +1939,7 @@ MonoBehaviour:
   Firepoint: {fileID: 1240331612}
   Firepoint2: {fileID: 389200561}
   bulletPrefab: {fileID: 7188115472109741099, guid: a876fb9916a99064eac86ff39c0d7bbd, type: 3}
+  RoF: 0.01
 --- !u!114 &800764511
 MonoBehaviour:
   m_ObjectHideFlags: 0
