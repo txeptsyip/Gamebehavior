@@ -7,11 +7,18 @@ public class weapon : MonoBehaviour
     public Transform Firepoint;
     public Transform Firepoint2;
     public GameObject bulletPrefab;
+    public float RoF;
+    float timer;
     void Update()
     {
+        timer += Time.deltaTime;
         if (Input.GetButton("Fire1"))
         {
-            Shoot();
+            if (timer >= RoF)
+            {
+                Shoot();
+                timer = 0;
+            }
         }
     }
 
